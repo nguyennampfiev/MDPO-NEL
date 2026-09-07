@@ -1,0 +1,36 @@
+{
+  "source_notebook": "/Utilisateurs/tnguye28/jupyter_notebook/HIPE-2022-baseline/evaluate_notebook.ipynb cell 87",
+  "note": "Related alias/base GPT-OSS-120B-1600 result set. NEWSEYE_SV was not found for this exact filename pattern.",
+  "files": [
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-1600-256_HIPE2020_DE_256.tsv",
+      "bytes": 927952,
+      "lines": 31325
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-1600-256_HIPE2020_EN_256.tsv",
+      "bytes": 470447,
+      "lines": 17186
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-1600-256_HIPE2020_FR_256.tsv",
+      "bytes": 1205919,
+      "lines": 41370
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-1600-256_NEWSEYE_DE_256.tsv",
+      "bytes": 2849623,
+      "lines": 99944
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-1600-256_NEWSEYE_FI_256.tsv",
+      "bytes": 461392,
+      "lines": 15275
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-1600-256_NEWSEYE_FR_256.tsv",
+      "bytes": 2021762,
+      "lines": 71249
+    }
+  ]
+}

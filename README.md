@@ -179,5 +179,26 @@ DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_NEWSEYE_DE_256.tsv
 DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_NEWSEYE_FR_256.tsv
 ```
 
+The broader alias/base result set referenced in
+`HIPE-2022-baseline/evaluate_notebook.ipynb` cell 87 is committed separately:
+
+```text
+results/gpt_oss_20b_mdpo_3003_2000_alias_base_gpt_oss_120b_1600_chunk256/
+```
+
+This set includes:
+
+```text
+HIPE2020_DE
+HIPE2020_EN
+HIPE2020_FR
+NEWSEYE_DE
+NEWSEYE_FI
+NEWSEYE_FR
+```
+
+No `NEWSEYE_SV` TSV was found for that exact `GPT-OSS-120B-1600` filename
+pattern.
+
 Large datasets, generated predictions, checkpoints, and model weights are
 ignored by `.gitignore` so this folder can be uploaded to GitHub cleanly.
