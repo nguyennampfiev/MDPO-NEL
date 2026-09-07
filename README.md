@@ -152,10 +152,43 @@ python -m nel_mdpo.train_mdpo \
 
 Use `--objective multidpo` for the simpler chosen-vs-many-negatives objective.
 
+## Hugging Face Assets
+
+The current fine-tuned model weights are hosted on Hugging Face:
+
+```text
+https://huggingface.co/Nampfiev1995/GPT-OSS-20B-MDPO-NEL-3003-1600-mxfp4
+```
+
+Although the repository name contains `1600`, the root model files have been
+replaced with checkpoint `2000` from:
+
+```text
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/dpo_multineg_3003_randomly_shuffle_2000_mxfp4
+```
+
+The model was fine-tuned from the GPT-OSS 20B base/pretrained model. Retrieval
+and alias-candidate generation artifacts in this repository use GPT-OSS 120B as
+the teacher/retriever model.
+
+Training data used for the MDPO/DPO run is also hosted in the same Hugging Face
+repository:
+
+```text
+https://huggingface.co/Nampfiev1995/GPT-OSS-20B-MDPO-NEL-3003-1600-mxfp4/tree/main/training_data/dpo_dataset_2003_chunk256
+```
+
+That folder contains the chunk-256 DPO JSONL train/dev files for:
+
+```text
+hipe2020: de, fr
+newseye: de, fi, fr, sv
+```
+
 ## Data And Results
 
-Training data currently uploaded for the `1600` checkpoint is hosted with the
-model on Hugging Face:
+Training data currently uploaded for the checkpoint-`2000` model is hosted with
+the model on Hugging Face:
 
 ```text
 https://huggingface.co/Nampfiev1995/GPT-OSS-20B-MDPO-NEL-3003-1600-mxfp4/tree/main/training_data/dpo_dataset_2003_chunk256
