@@ -154,70 +154,57 @@ Use `--objective multidpo` for the simpler chosen-vs-many-negatives objective.
 
 ## Data And Results
 
-Training data used for `GPT-OSS-20B-MDPO-NEL-3003-1600-mxfp4` is hosted with
-the model on Hugging Face:
+Training data currently uploaded for the `1600` checkpoint is hosted with the
+model on Hugging Face:
 
 ```text
 https://huggingface.co/Nampfiev1995/GPT-OSS-20B-MDPO-NEL-3003-1600-mxfp4/tree/main/training_data/dpo_dataset_2003_chunk256
 ```
 
-It corresponds to the `NewPaper/DPO_dataset_2003` chunk-256 DPO files, excluding
-the extra `ajmc`, `letemps`, and `topres19th` subsets.
+It corresponds to the `NewPaper/DPO_dataset_2003` chunk-256 DPO files,
+excluding the extra `ajmc`, `letemps`, and `topres19th` subsets.
 
-Prediction TSVs for that model/run are committed in:
+The validated `3003-2000` paper-score artifacts are committed in:
+
+```text
+results/gpt_oss_20b_mdpo_3003_2000_alias_chunk256_paper_scores/
+```
+
+This folder contains the HIPE scorer `_nel.tsv` outputs for all seven
+dataset/language columns and the four available prediction TSVs for the exact
+`DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256` family.
+
+```text
+HIPE2020_FR  72.4  DPO-Sample...3003-GPTOSS20B-2000-ALIAS-256
+HIPE2020_DE  65.6  DPO-Sample...3003-GPTOSS20B-2000-ALIAS-256
+HIPE2020_EN  73.8  DPO-MultiNegative...3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B
+NEWSEYE_FR   68.7  DPO-Sample...3003-GPTOSS20B-2000-ALIAS-256
+NEWSEYE_DE   59.2  DPO-Sample...3003-GPTOSS20B-2000-ALIAS-256
+NEWSEYE_FI   62.7  DPO-MultiNegative...3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B
+NEWSEYE_SV   65.0  DPO-MultiNegative...3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B
+```
+
+Scores are `NEL-LIT-micro-strict` F1 from
+`HIPE-scorer/clef_evaluation.py --task nel --original_nel`. The scorer files
+show `NEWSEYE_FI = 62.7` and `NEWSEYE_SV = 65.0`; if a table lists
+`FI = 65.0` and `SV = 62.7`, those two columns are swapped relative to the
+files.
+
+Earlier `1600` prediction TSVs are also retained in:
 
 ```text
 results/gpt_oss_20b_mdpo_3003_1600_chunk256/
 ```
 
-Included outputs:
-
-```text
-DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_HIPE2020_DE_256.tsv
-DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_HIPE2020_FR_256.tsv
-DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_NEWSEYE_DE_256.tsv
-DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_NEWSEYE_FR_256.tsv
-```
-
-The broader alias/base result set referenced in
-`HIPE-2022-baseline/evaluate_notebook.ipynb` cell 87 is committed separately:
+The broader alias/base `1600` result set referenced in
+`HIPE-2022-baseline/evaluate_notebook.ipynb` cell 87 is retained separately:
 
 ```text
 results/gpt_oss_20b_mdpo_3003_2000_alias_base_gpt_oss_120b_1600_chunk256/
 ```
 
-This set includes:
-
-```text
-HIPE2020_DE
-HIPE2020_EN
-HIPE2020_FR
-NEWSEYE_DE
-NEWSEYE_FI
-NEWSEYE_FR
-```
-
 No `NEWSEYE_SV` TSV was found for that exact `GPT-OSS-120B-1600` filename
 pattern.
-
-The closest `NEWSEYE_SV` result referenced by `NewPaper/compare_tsvs.py` is
-committed separately:
-
-```text
-results/gpt_oss_20b_mdpo_3003_2000_alias_base_gpt_oss_20b_chunk256/
-```
-
-Included file:
-
-```text
-DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv
-```
-
-It was validated with `HIPE-scorer/clef_evaluation.py --task nel
---original_nel`. The scorer output is included as
-`DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256_nel.tsv`.
-For this file, the scorer reports `NEL-LIT-micro-strict` F1 = `59.3` and
-`NEL-LIT-macro_doc-strict` F1 = `63.6`.
 
 Large datasets, generated predictions, checkpoints, and model weights are
 ignored by `.gitignore` so this folder can be uploaded to GitHub cleanly.

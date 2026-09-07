@@ -1,0 +1,100 @@
+{
+  "description": "Validated 3003-2000 alias chunk-256 paper-score artifacts. Scores are copied from HIPE scorer _nel.tsv outputs generated with --task nel --original_nel.",
+  "model_checkpoint": "dpo_multineg_3003_randomly_shuffle_2000_mxfp4",
+  "local_model_source": "/Utilisateurs/tnguye28/jupyter_notebook/NEL/dpo_multineg_3003_randomly_shuffle_2000_mxfp4",
+  "note": "The files show NEWSEYE_FI=62.7 and NEWSEYE_SV=65.0 for NEL-LIT micro-strict F1.",
+  "scores": [
+    {
+      "file": "DPO-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-HIPE2020_EN_256_nel.tsv",
+      "NEL-LIT-micro-strict-F1": 73.8,
+      "NEL-LIT-macro_doc-strict-F1": 71.3
+    },
+    {
+      "file": "DPO-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-NEWSEYE_FI_256_nel.tsv",
+      "NEL-LIT-micro-strict-F1": 62.7,
+      "NEL-LIT-macro_doc-strict-F1": 54.9
+    },
+    {
+      "file": "DPO-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-NEWSEYE_SV_256_nel.tsv",
+      "NEL-LIT-micro-strict-F1": 65.0,
+      "NEL-LIT-macro_doc-strict-F1": 66.2
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_HIPE2020_DE_256_nel.tsv",
+      "NEL-LIT-micro-strict-F1": 65.6,
+      "NEL-LIT-macro_doc-strict-F1": 64.5
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_HIPE2020_FR_256_nel.tsv",
+      "NEL-LIT-micro-strict-F1": 72.4,
+      "NEL-LIT-macro_doc-strict-F1": 74.8
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_NEWSEYE_DE_256_nel.tsv",
+      "NEL-LIT-micro-strict-F1": 59.2,
+      "NEL-LIT-macro_doc-strict-F1": 61.7
+    },
+    {
+      "file": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_NEWSEYE_FR_256_nel.tsv",
+      "NEL-LIT-micro-strict-F1": 68.7,
+      "NEL-LIT-macro_doc-strict-F1": 71.7
+    }
+  ],
+  "files": [
+    {
+      "name": "DPO-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-HIPE2020_EN_256_nel.tsv",
+      "bytes": 1685,
+      "sha256": "a434c6b7f2d5ba5acdf5e403871067f9b7dd53be7756747bcdd1e666c4678dfe"
+    },
+    {
+      "name": "DPO-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-NEWSEYE_FI_256_nel.tsv",
+      "bytes": 1628,
+      "sha256": "a7f40be001449b21bab66caf21fd8d56348c2583c68ff62c6691a44d3c73973c"
+    },
+    {
+      "name": "DPO-MultiNegative-3003-GPTOSS20B-2000-ALIAS-GPT-OSS-120B-NEWSEYE_SV_256_nel.tsv",
+      "bytes": 1662,
+      "sha256": "e24bdfcd60733a74fe8d6c3fcec19759d36515a61a4a4c9acc97fe8e3909c948"
+    },
+    {
+      "name": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_HIPE2020_DE_256.tsv",
+      "bytes": 928596,
+      "sha256": "34392b9bcae786637f2bc5bf604b9d944166a277f98a4b1c000c8c29fc815766"
+    },
+    {
+      "name": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_HIPE2020_DE_256_nel.tsv",
+      "bytes": 1584,
+      "sha256": "9d5d02d43e521c7df1395ad7e442a386a055b907514980b09a53574d033c22f4"
+    },
+    {
+      "name": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_HIPE2020_FR_256.tsv",
+      "bytes": 1205872,
+      "sha256": "fc2fe97891db0820736383cad5119a7554fc55ddb77c87add32f32fb488ddf08"
+    },
+    {
+      "name": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_HIPE2020_FR_256_nel.tsv",
+      "bytes": 1584,
+      "sha256": "efaea8dab5eb20b544f341e5c70a0299a6a381760d0fdf5b871ed2479b60403e"
+    },
+    {
+      "name": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_NEWSEYE_DE_256.tsv",
+      "bytes": 2850454,
+      "sha256": "f0b5dd7c3e281ab5f9cc948bee09adf75c8837be0ec84ca4ec6a42244208d499"
+    },
+    {
+      "name": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_NEWSEYE_DE_256_nel.tsv",
+      "bytes": 1525,
+      "sha256": "944ced41b63be951ec109bdaf563331a3d719e83addb10dc6cc935f9684eda50"
+    },
+    {
+      "name": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_NEWSEYE_FR_256.tsv",
+      "bytes": 2022475,
+      "sha256": "972ca81826d31645ff7c66a237f96159bdfc68aca722c99336f6ca310f90e1ed"
+    },
+    {
+      "name": "DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-256_NEWSEYE_FR_256_nel.tsv",
+      "bytes": 1522,
+      "sha256": "f7afadda2b4a16c98b4e28519a5959a25f8b5dc48d11860aa469d10270148295"
+    }
+  ]
+}
