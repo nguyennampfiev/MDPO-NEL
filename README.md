@@ -200,5 +200,24 @@ NEWSEYE_FR
 No `NEWSEYE_SV` TSV was found for that exact `GPT-OSS-120B-1600` filename
 pattern.
 
+The closest `NEWSEYE_SV` result referenced by `NewPaper/compare_tsvs.py` is
+committed separately:
+
+```text
+results/gpt_oss_20b_mdpo_3003_2000_alias_base_gpt_oss_20b_chunk256/
+```
+
+Included file:
+
+```text
+DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv
+```
+
+It was validated with `HIPE-scorer/clef_evaluation.py --task nel
+--original_nel`. The scorer output is included as
+`DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256_nel.tsv`.
+For this file, the scorer reports `NEL-LIT-micro-strict` F1 = `59.3` and
+`NEL-LIT-macro_doc-strict` F1 = `63.6`.
+
 Large datasets, generated predictions, checkpoints, and model weights are
 ignored by `.gitignore` so this folder can be uploaded to GitHub cleanly.

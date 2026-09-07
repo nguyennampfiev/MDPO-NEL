@@ -1,0 +1,9 @@
+System	Evaluation	Label	P	R	F1	F1_std	P_std	R_std	TP	FP	FN
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/HIPEformat_NewPaper/DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv	NEL-LIT-micro-fuzzy-TIME-ALL-LED-ALL-@1	ALL	0.592	0.594	0.593				351	242	240
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/HIPEformat_NewPaper/DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv	NEL-LIT-micro-strict-TIME-ALL-LED-ALL-@1	ALL	0.592	0.594	0.593				351	242	240
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/HIPEformat_NewPaper/DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv	NEL-LIT-macro_doc-fuzzy-TIME-ALL-LED-ALL-@1	ALL	0.636	0.636	0.636	0.15	0.15	0.149			
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/HIPEformat_NewPaper/DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv	NEL-LIT-macro_doc-strict-TIME-ALL-LED-ALL-@1	ALL	0.636	0.636	0.636	0.15	0.15	0.149			
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/HIPEformat_NewPaper/DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv	NEL-METO-micro-fuzzy-TIME-ALL-LED-ALL-@1	ALL	0	0	0				0	0	0
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/HIPEformat_NewPaper/DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv	NEL-METO-micro-strict-TIME-ALL-LED-ALL-@1	ALL	0	0	0				0	0	0
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/HIPEformat_NewPaper/DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv	NEL-METO-macro_doc-fuzzy-TIME-ALL-LED-ALL-@1	ALL									
+/Utilisateurs/tnguye28/jupyter_notebook/NEL/HIPEformat_NewPaper/DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-2000-ALIAS-BaseGPTOSS20B-256_NEWSEYE_SV_256.tsv	NEL-METO-macro_doc-strict-TIME-ALL-LED-ALL-@1	ALL									
