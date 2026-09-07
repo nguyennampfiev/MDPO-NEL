@@ -39,11 +39,26 @@ source .venv/bin/activate
 pip install -e ".[train]"
 ```
 
-The retrieval and selection CLIs expect an OpenAI-compatible local model server
-such as vLLM.
+The pinned package versions observed in the local `IE-2025` training/export
+environment are recorded in `requirements.txt`. That environment was used for
+the HIPE scorer checks and Unsloth MXFP4 export workflow.
 
 ```bash
-vllm serve openai/gpt-oss-120b --port 8007
+pip install -r requirements.txt
+```
+
+The retrieval and selection CLIs expect an OpenAI-compatible local model server.
+For serving the GPT-OSS model with vLLM, use the separate `GPT-OSS` environment.
+The package versions observed there are recorded in `requirements-serve.txt`
+and include `vllm==0.19.0`.
+
+```bash
+/Utilisateurs/tnguye28/.conda/envs/GPT-OSS/bin/python \
+  -m vllm.entrypoints.openai.api_server \
+  --model Nampfiev1995/GPT-OSS-20B-MDPO-NEL-3003-1600-mxfp4 \
+  --served-model-name GPT-OSS-20B-MDPO-NEL-3003-2000-mxfp4 \
+  --host 0.0.0.0 \
+  --port 8007
 ```
 
 ## Phase 1: Retrieval
