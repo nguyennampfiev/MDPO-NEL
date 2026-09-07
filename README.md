@@ -12,6 +12,9 @@ This repository contains the main code for a two-phase Named Entity Linking
 The code was refactored from exploratory notebooks into reusable Python modules
 and command-line entry points.
 
+For end-to-end environment, data, checkpoint, MXFP4 export, and scorer details,
+see `REPRODUCIBILITY.md`.
+
 ## Layout
 
 ```text
