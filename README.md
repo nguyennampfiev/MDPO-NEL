@@ -152,6 +152,39 @@ python -m nel_mdpo.train_mdpo \
 
 Use `--objective multidpo` for the simpler chosen-vs-many-negatives objective.
 
+## Export MXFP4 Weights
+
+The training CLI saves the trained LoRA/PEFT checkpoint with
+`trainer.save_model(...)`. It does not directly write the final MXFP4 merged
+model folder.
+
+The MXFP4 model hosted on Hugging Face was produced as a separate export step,
+following the notebook workflow in `convert_model_to_mpfx4.ipynb` and
+`Finetuning-DPO-MultiNeg-Copy5.ipynb`:
+
+```python
+from unsloth import FastLanguageModel
+
+model, tokenizer = FastLanguageModel.from_pretrained(
+    model_name="dpo_multineg_3003_randomly_shuffle/checkpoint-2000",
+    dtype=None,
+    max_seq_length=2048,
+    load_in_4bit=True,
+    full_finetuning=False,
+)
+
+model.save_pretrained_merged(
+    "dpo_multineg_3003_randomly_shuffle_2000_mxfp4",
+    tokenizer,
+    save_method="mxfp4",
+)
+tokenizer.save_pretrained("dpo_multineg_3003_randomly_shuffle_2000_mxfp4")
+```
+
+For GPT-OSS 20B, the exported folder also keeps the base model `config.json`
+from the pretrained `unsloth/gpt-oss-20b` snapshot so that the MXFP4 shards can
+be served with Transformers/vLLM.
+
 ## Hugging Face Assets
 
 The current fine-tuned model weights are hosted on Hugging Face:
