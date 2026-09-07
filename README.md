@@ -43,7 +43,7 @@ The retrieval and selection CLIs expect an OpenAI-compatible local model server
 such as vLLM.
 
 ```bash
-vllm serve openai/gpt-oss-20b --port 8007
+vllm serve openai/gpt-oss-120b --port 8007
 ```
 
 ## Phase 1: Retrieval
@@ -62,8 +62,9 @@ python scripts/retrieve_candidates.py \
   --output-dir runs/retrieval \
   --dataset-name hipe2020 \
   --language fr \
-  --model openai/gpt-oss-20b \
+  --model openai/gpt-oss-120b \
   --base-url http://0.0.0.0:8007/v1 \
+  --split test \
   --max-candidates 8 \
   --alias-dict data/alias_dictionary_multilingual.json \
   --hipe-root ../HIPE-2022-data/data/v2.1
@@ -75,8 +76,8 @@ Retrieval post-processing can also be run separately:
 
 ```bash
 python scripts/postprocess_retrieval.py \
-  --input-file runs/retrieval/gpt-oss-20b-hipe2020-fr-retrieved.jsonl \
-  --output-file runs/retrieval/gpt-oss-20b-hipe2020-fr-256_alias.jsonl \
+  --input-file runs/retrieval/gpt-oss-120b-hipe2020-fr-retrieved.jsonl \
+  --output-file runs/retrieval/gpt-oss-120b-hipe2020-fr-256_alias.jsonl \
   --alias-dict data/alias_dictionary_multilingual.json \
   --hipe-root ../HIPE-2022-data/data/v2.1
 ```
@@ -87,11 +88,11 @@ Run selection over the retrieval output and write token-level predictions:
 
 ```bash
 python scripts/select_entities.py \
-  --input-file runs/retrieval/gpt-oss-20b-hipe2020-fr-retrieved.jsonl \
+  --input-file runs/retrieval/gpt-oss-120b-hipe2020-fr-retrieved.jsonl \
   --output-dir runs/selection \
   --tsv-path ../HIPE-2022-data/data/v2.1/hipe2020/fr/HIPE-2022-v2.1-hipe2020-test-fr.tsv \
   --language fr \
-  --model openai/gpt-oss-20b \
+  --model openai/gpt-oss-120b \
   --base-url http://0.0.0.0:8007/v1
 ```
 
@@ -102,9 +103,37 @@ python scripts/build_dpo_data.py \
   --tsv-path ../HIPE-2022-data/data/v2.1/hipe2020/fr/HIPE-2022-v2.1-hipe2020-train-fr.tsv \
   --output-file data/dpo_hipe2020_fr_train.jsonl \
   --language fr \
-  --model openai/gpt-oss-20b \
+  --model openai/gpt-oss-120b \
   --base-url http://0.0.0.0:8007/v1 \
+  --chunk-size 256 \
   --max-negatives 3
+```
+
+## Legacy NewPaper Sources
+
+The `legacy_newpaper/` folder keeps the original scripts used during the
+experiments, including the segment-256 retrieval variants and alias workflow:
+
+```text
+legacy_newpaper/retrieval_simple_with_summary_context.py
+legacy_newpaper/retrieval_with_alias.py
+legacy_newpaper/add_alias_report.py
+legacy_newpaper/alias_dictionary_multilingual.json
+```
+
+## GPT-OSS-120B Segment-256 Retrieval Files
+
+`data/retrieval_gpt_oss_120b_256/` contains both retrieval versions for each
+subset/language:
+
+- original retrieval: `gpt-oss-120b-<dataset>-<lang>-256.jsonl`
+- retrieval after adding aliases: `gpt-oss-120b-<dataset>-<lang>-256_alias.jsonl`
+
+Included subsets/languages:
+
+```text
+hipe2020: de, en, fr
+newseye: de, fi, fr, sv
 ```
 
 ## Train MDPO / Multi-Negative DPO
@@ -116,7 +145,7 @@ For standard multi-negative DPO records with `prompt`, `chosen`, and
 python -m nel_mdpo.train_mdpo \
   --train-files data/*train*.jsonl \
   --eval-files data/*dev*.jsonl \
-  --model-name openai/gpt-oss-20b \
+  --model-name openai/gpt-oss-120b \
   --output-dir outputs/mdpo \
   --objective mdpo
 ```

@@ -64,7 +64,7 @@ async def build_dpo_data_from_hipe_tsv(
     language: str,
     model: str,
     base_url: str,
-    chunk_size: int = 128,
+    chunk_size: int = 256,
     max_negatives: int = 3,
     max_candidates: int = 8,
     concurrency: int = 8,

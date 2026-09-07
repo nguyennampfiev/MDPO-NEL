@@ -13,7 +13,7 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Train NEL selector with multi-negative DPO or MDPO.")
     p.add_argument("--train-files", nargs="+", required=True)
     p.add_argument("--eval-files", nargs="+", required=True)
-    p.add_argument("--model-name", default="openai/gpt-oss-20b")
+    p.add_argument("--model-name", default="openai/gpt-oss-120b")
     p.add_argument("--output-dir", default="outputs/mdpo")
     p.add_argument("--objective", choices=["multidpo", "mdpo"], default="mdpo")
     p.add_argument("--max-seq-length", type=int, default=2048)
