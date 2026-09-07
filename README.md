@@ -1,0 +1,127 @@
+# NEL Retrieval, Selection, and MDPO Fine-Tuning
+
+This repository contains the main code for a two-phase Named Entity Linking
+(NEL) pipeline for historical newspaper text:
+
+1. **Retrieval**: generate normalized entity-name candidates with an LLM, then
+   retrieve matching Wikidata QIDs.
+2. **Selection**: choose the best Wikidata QID from the retrieved candidates.
+3. **Fine-tuning**: build preference datasets and train the selector with
+   multi-negative DPO / MDPO-style objectives.
+
+The code was refactored from exploratory notebooks into reusable Python modules
+and command-line entry points.
+
+## Layout
+
+```text
+nel_mdpo/
+  data.py                 HIPE TSV loading, entity extraction, TSV writing
+  prompts.py              Shared retrieval and selection prompts
+  wikidata.py             Async Wikidata search and entity lookup helpers
+  retrieval.py            Phase 1 candidate retrieval pipeline
+  selection.py            Phase 2 candidate selection pipeline
+  dpo_data.py             Preference dataset builder
+  trainers.py             Multi-negative DPO and MDPO/CADPO trainers
+  train_mdpo.py           Fine-tuning CLI
+scripts/
+  retrieve_candidates.py  Run retrieval
+  postprocess_retrieval.py Normalize/deduplicate retrievals and promote aliases
+  select_entities.py      Run selection
+  build_dpo_data.py       Build preference data from HIPE TSV
+```
+
+## Install
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[train]"
+```
+
+The retrieval and selection CLIs expect an OpenAI-compatible local model server
+such as vLLM.
+
+```bash
+vllm serve openai/gpt-oss-20b --port 8007
+```
+
+## Phase 1: Retrieval
+
+Input JSONL records should contain at least:
+
+```json
+{"input_candidate": "Paris", "context": "...", "gold_qid": "Q90", "abs_token_start": 10, "abs_token_end": 11}
+```
+
+Run:
+
+```bash
+python scripts/retrieve_candidates.py \
+  --input-file data/hipe2020-test-fr.jsonl \
+  --output-dir runs/retrieval \
+  --dataset-name hipe2020 \
+  --language fr \
+  --model openai/gpt-oss-20b \
+  --base-url http://0.0.0.0:8007/v1 \
+  --max-candidates 8 \
+  --alias-dict data/alias_dictionary_multilingual.json \
+  --hipe-root ../HIPE-2022-data/data/v2.1
+```
+
+Output records include `retrievals`, a list of candidate QIDs.
+
+Retrieval post-processing can also be run separately:
+
+```bash
+python scripts/postprocess_retrieval.py \
+  --input-file runs/retrieval/gpt-oss-20b-hipe2020-fr-retrieved.jsonl \
+  --output-file runs/retrieval/gpt-oss-20b-hipe2020-fr-256_alias.jsonl \
+  --alias-dict data/alias_dictionary_multilingual.json \
+  --hipe-root ../HIPE-2022-data/data/v2.1
+```
+
+## Phase 2: Selection
+
+Run selection over the retrieval output and write token-level predictions:
+
+```bash
+python scripts/select_entities.py \
+  --input-file runs/retrieval/gpt-oss-20b-hipe2020-fr-retrieved.jsonl \
+  --output-dir runs/selection \
+  --tsv-path ../HIPE-2022-data/data/v2.1/hipe2020/fr/HIPE-2022-v2.1-hipe2020-test-fr.tsv \
+  --language fr \
+  --model openai/gpt-oss-20b \
+  --base-url http://0.0.0.0:8007/v1
+```
+
+## Build Preference Data
+
+```bash
+python scripts/build_dpo_data.py \
+  --tsv-path ../HIPE-2022-data/data/v2.1/hipe2020/fr/HIPE-2022-v2.1-hipe2020-train-fr.tsv \
+  --output-file data/dpo_hipe2020_fr_train.jsonl \
+  --language fr \
+  --model openai/gpt-oss-20b \
+  --base-url http://0.0.0.0:8007/v1 \
+  --max-negatives 3
+```
+
+## Train MDPO / Multi-Negative DPO
+
+For standard multi-negative DPO records with `prompt`, `chosen`, and
+`rejected` fields:
+
+```bash
+python -m nel_mdpo.train_mdpo \
+  --train-files data/*train*.jsonl \
+  --eval-files data/*dev*.jsonl \
+  --model-name openai/gpt-oss-20b \
+  --output-dir outputs/mdpo \
+  --objective mdpo
+```
+
+Use `--objective multidpo` for the simpler chosen-vs-many-negatives objective.
+
+Large datasets, generated predictions, checkpoints, and model weights are
+ignored by `.gitignore` so this folder can be uploaded to GitHub cleanly.

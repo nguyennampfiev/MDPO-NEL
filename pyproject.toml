@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nel-mdpo"
+version = "0.1.0"
+description = "Two-phase NEL retrieval/selection pipeline with multi-negative DPO and MDPO fine-tuning."
+requires-python = ">=3.10"
+dependencies = [
+  "aiohttp>=3.9",
+  "datasets>=2.19",
+  "openai>=1.0",
+  "openai-agents>=0.2",
+  "pydantic>=2",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+train = [
+  "torch",
+  "transformers",
+  "trl",
+  "peft",
+  "bitsandbytes",
+  "unsloth",
+]
+
+[tool.setuptools.packages.find]
+include = ["nel_mdpo*"]
