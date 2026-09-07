@@ -152,5 +152,32 @@ python -m nel_mdpo.train_mdpo \
 
 Use `--objective multidpo` for the simpler chosen-vs-many-negatives objective.
 
+## Data And Results
+
+Training data used for `GPT-OSS-20B-MDPO-NEL-3003-1600-mxfp4` is hosted with
+the model on Hugging Face:
+
+```text
+https://huggingface.co/Nampfiev1995/GPT-OSS-20B-MDPO-NEL-3003-1600-mxfp4/tree/main/training_data/dpo_dataset_2003_chunk256
+```
+
+It corresponds to the `NewPaper/DPO_dataset_2003` chunk-256 DPO files, excluding
+the extra `ajmc`, `letemps`, and `topres19th` subsets.
+
+Prediction TSVs for that model/run are committed in:
+
+```text
+results/gpt_oss_20b_mdpo_3003_1600_chunk256/
+```
+
+Included outputs:
+
+```text
+DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_HIPE2020_DE_256.tsv
+DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_HIPE2020_FR_256.tsv
+DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_NEWSEYE_DE_256.tsv
+DPO-SampleGPTOSS120B-MultiNegative-3003-GPTOSS20B-1600-256_NEWSEYE_FR_256.tsv
+```
+
 Large datasets, generated predictions, checkpoints, and model weights are
 ignored by `.gitignore` so this folder can be uploaded to GitHub cleanly.
